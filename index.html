@@ -1,0 +1,422 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Khairil & Shira | Wedding Invitation</title>
+<meta name="theme-color" content="#f8f4ec">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500;600&display=swap');
+
+:root {
+  --ivory:#f8f4ec;
+  --gold:#ad8b51;
+  --dark:#514432;
+}
+* {box-sizing:border-box}
+html {scroll-behavior:smooth}
+body {
+  margin:0;
+  background:var(--ivory);
+  color:var(--dark);
+  font-family:'DM Sans',sans-serif;
+  text-align:center;
+}
+h1,h2,h3 {
+  font-family:'Cormorant Garamond',serif;
+  font-weight:500;
+}
+h1 {font-size:clamp(64px,16vw,100px);line-height:.9;margin:25px 0}
+h2 {font-size:46px;margin:15px 0}
+p {line-height:1.9}
+.gold {color:var(--gold)}
+.small {
+  font-size:11px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+}
+section {padding:75px 25px}
+.ornament {
+  font-size:30px;
+  color:var(--gold);
+  margin:20px 0;
+}
+button,.btn {
+  display:inline-block;
+  padding:15px 30px;
+  border:1px solid var(--gold);
+  background:transparent;
+  color:var(--dark);
+  font:12px 'DM Sans',sans-serif;
+  letter-spacing:2px;
+  text-decoration:none;
+  cursor:pointer;
+  margin:8px;
+}
+.btn.primary,button.primary {
+  background:var(--gold);
+  color:white;
+}
+.cover {
+  position:fixed;
+  inset:0;
+  z-index:100;
+  background:var(--ivory);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:25px;
+  transition:opacity 1s;
+}
+.cover-inner {
+  width:100%;
+  max-width:450px;
+  min-height:75vh;
+  border:1px solid var(--gold);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:30px;
+}
+.hero {
+  min-height:100svh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:25px;
+  background:linear-gradient(#f8f4eceb,#f8f4eceb);
+}
+.hero-inner {
+  width:100%;
+  max-width:550px;
+  padding:75px 20px;
+  border:1px solid #c9b58e;
+}
+.hero .date {
+  letter-spacing:4px;
+  margin-top:35px;
+}
+.fade {
+  opacity:0;
+  transform:translateY(25px);
+  transition:all 1s ease;
+}
+.fade.show {
+  opacity:1;
+  transform:translateY(0);
+}
+.photo {
+  width:100%;
+  max-width:480px;
+  height:440px;
+  object-fit:cover;
+  border:8px solid white;
+  box-shadow:0 10px 35px #00000012;
+}
+.countdown {
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  margin:35px auto;
+}
+.countdown div {
+  border:1px solid #d9c9aa;
+  padding:15px 10px;
+  min-width:68px;
+}
+.countdown strong {
+  display:block;
+  font-family:'Cormorant Garamond',serif;
+  font-size:32px;
+  font-weight:500;
+}
+.countdown span {
+  font-size:9px;
+  letter-spacing:1px;
+}
+.event {
+  background:#efe8da;
+}
+.divider {
+  width:80px;
+  height:1px;
+  background:var(--gold);
+  margin:25px auto;
+}
+form {
+  max-width:420px;
+  margin:30px auto;
+}
+input,select,textarea {
+  display:block;
+  width:100%;
+  padding:16px;
+  margin:12px 0;
+  border:1px solid #d7c9ae;
+  border-radius:0;
+  background:white;
+  color:var(--dark);
+  font:14px 'DM Sans',sans-serif;
+}
+form button {width:100%;margin:12px 0}
+footer {
+  padding:45px 20px;
+  background:#eae0ce;
+  font-size:12px;
+}
+.music {
+  position:fixed;
+  bottom:22px;
+  right:20px;
+  z-index:20;
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  background:var(--gold);
+  color:white;
+  padding:0;
+  margin:0;
+  font-size:20px;
+  letter-spacing:0;
+}
+</style>
+</head>
+
+<body>
+
+<!-- EDIT MAKLUMAT MAJLIS DALAM CONFIG -->
+
+<div class="cover" id="cover">
+  <div class="cover-inner">
+    <div class="ornament">✦</div>
+    <p class="small">The Wedding Invitation</p>
+    <h1>Khairil<br><span class="gold">&</span><br>Shira</h1>
+    <div class="divider"></div>
+    <p>Dengan penuh kesyukuran,<br>
+    kami menjemput anda meraikan<br>
+    hari bahagia kami.</p>
+    <button class="primary" onclick="openInvitation()">
+      OPEN INVITATION
+    </button>
+  </div>
+</div>
+
+<main>
+<section class="hero">
+  <div class="hero-inner fade">
+    <div class="ornament">✧</div>
+    <p class="small">Together with our families</p>
+    <h1>Khairil<br><span class="gold">&</span><br>Shira</h1>
+    <p class="small">The Beginning of Forever</p>
+    <div class="divider"></div>
+    <p class="date" id="heroDate"></p>
+    <p>YOU ARE CORDIALLY INVITED</p>
+  </div>
+</section>
+
+<section class="fade">
+  <p class="small gold">A Celebration of Love</p>
+  <h2>Our Love Story</h2>
+  <div class="ornament">❦</div>
+  <p>
+    Two hearts, one beautiful journey.<br>
+    With love and gratitude,<br>
+    we begin our forever together.
+  </p>
+  <img class="photo" id="couplePhoto"
+    src="couple.jpg"
+    alt="Khairil and Shira"
+    onerror="this.style.display='none'">
+  <p style="font-family:'Cormorant Garamond',serif;font-size:25px">
+    A love written in the stars.
+  </p>
+</section>
+
+<section class="event fade">
+  <p class="small gold">Save The Date</p>
+  <h2>Wedding Reception</h2>
+  <div class="ornament">✦</div>
+  <h3 id="eventDate" style="font-size:30px"></h3>
+  <p id="eventTime"></p>
+  <div class="divider"></div>
+  <h3 id="venueName" style="font-size:32px"></h3>
+  <p id="venueAddress"></p>
+  <a class="btn primary" id="mapsLink"
+     target="_blank" rel="noopener">GOOGLE MAPS</a>
+  <a class="btn" id="wazeLink"
+     target="_blank" rel="noopener">WAZE</a>
+</section>
+
+<section class="fade">
+  <p class="small gold">Counting The Moments</p>
+  <h2>Until We Say I Do</h2>
+  <div class="countdown">
+    <div><strong id="days">00</strong><span>DAYS</span></div>
+    <div><strong id="hours">00</strong><span>HOURS</span></div>
+    <div><strong id="minutes">00</strong><span>MIN</span></div>
+    <div><strong id="seconds">00</strong><span>SEC</span></div>
+  </div>
+</section>
+
+<section class="event fade">
+  <p class="small gold">The Honour of Your Presence</p>
+  <h2>Kindly RSVP</h2>
+  <p>Mohon sahkan kehadiran anda<br>
+  bagi memeriahkan majlis kami.</p>
+
+  <form id="rsvpForm">
+    <input id="guestName" placeholder="Nama penuh" required>
+    <select id="attendance" required>
+      <option value="">Pilih kehadiran</option>
+      <option value="Hadir">Hadir</option>
+      <option value="Tidak hadir">Tidak hadir</option>
+    </select>
+    <select id="pax" required>
+      <option value="">Bilangan tetamu</option>
+      <option value="1">1 orang</option>
+      <option value="2">2 orang</option>
+      <option value="3">3 orang</option>
+      <option value="4">4 orang</option>
+      <option value="5">5 orang</option>
+    </select>
+    <textarea id="wish" rows="3"
+      placeholder="Ucapan buat pengantin (optional)"></textarea>
+    <button class="primary" type="submit">
+      SEND RSVP VIA WHATSAPP
+    </button>
+  </form>
+  <p style="font-size:11px">
+    RSVP dihantar melalui WhatsApp.
+  </p>
+</section>
+
+<section class="fade">
+  <div class="ornament">❦</div>
+  <h2>Thank You</h2>
+  <p>Your presence is our greatest gift.</p>
+  <h2 class="gold">Khairil & Shira</h2>
+</section>
+</main>
+
+<footer>
+  <p class="small">A Celebration of Forever</p>
+  <p>Wedding Invitation</p>
+  <p>Compliments of Leanor Weddings</p>
+</footer>
+
+<button class="music" id="musicBtn"
+  onclick="toggleMusic()" aria-label="Toggle music">♫</button>
+
+<audio id="bgMusic" loop preload="none">
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+/*
+  EDIT MAKLUMAT DI SINI.
+  Gantikan tarikh, venue, nombor dan link.
+*/
+const CONFIG = {
+  date: "2027-06-20T11:00:00+08:00",
+  dateText: "20 JUNE 2027",
+  timeText: "11:00 AM - 4:00 PM",
+  venue: "NAMA DEWAN MAJLIS",
+  address: "Alamat penuh lokasi majlis",
+  maps: "https://maps.google.com/",
+  waze: "https://waze.com/ul",
+  whatsapp: "60123456789"
+};
+
+document.getElementById("heroDate").textContent =
+  CONFIG.dateText;
+document.getElementById("eventDate").textContent =
+  CONFIG.dateText;
+document.getElementById("eventTime").textContent =
+  CONFIG.timeText;
+document.getElementById("venueName").textContent =
+  CONFIG.venue;
+document.getElementById("venueAddress").textContent =
+  CONFIG.address;
+document.getElementById("mapsLink").href =
+  CONFIG.maps;
+document.getElementById("wazeLink").href =
+  CONFIG.waze;
+
+const music = document.getElementById("bgMusic");
+const musicBtn = document.getElementById("musicBtn");
+
+function openInvitation() {
+  const cover = document.getElementById("cover");
+  cover.style.opacity = "0";
+  setTimeout(() => cover.style.display = "none",1000);
+  music.play().catch(() => {});
+}
+
+function toggleMusic() {
+  if (music.paused) {
+    music.play().catch(() => {});
+  } else {
+    music.pause();
+  }
+}
+
+function updateCountdown() {
+  const target = new Date(CONFIG.date).getTime();
+  const diff = Math.max(0,target-Date.now());
+  const days = Math.floor(diff/86400000);
+  const hours = Math.floor(diff/3600000)%24;
+  const minutes = Math.floor(diff/60000)%60;
+  const seconds = Math.floor(diff/1000)%60;
+  document.getElementById("days").textContent = days;
+  document.getElementById("hours").textContent =
+    String(hours).padStart(2,"0");
+  document.getElementById("minutes").textContent =
+    String(minutes).padStart(2,"0");
+  document.getElementById("seconds").textContent =
+    String(seconds).padStart(2,"0");
+}
+updateCountdown();
+setInterval(updateCountdown,1000);
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
+},{threshold:0.1});
+document.querySelectorAll(".fade").forEach(el => {
+  observer.observe(el);
+});
+
+document.getElementById("rsvpForm")
+.addEventListener("submit",function(e) {
+  e.preventDefault();
+  const name = document.getElementById("guestName").value;
+  const attendance =
+    document.getElementById("attendance").value;
+  const pax = document.getElementById("pax").value;
+  const wish = document.getElementById("wish").value;
+
+  if(CONFIG.whatsapp === "60123456789") {
+    alert("Sila tetapkan nombor WhatsApp RSVP dahulu.");
+    return;
+  }
+
+  const message =
+    "RSVP Khairil & Shira\n\n" +
+    "Nama: " + name + "\n" +
+    "Kehadiran: " + attendance + "\n" +
+    "Bilangan: " + pax + "\n" +
+    "Ucapan: " + (wish || "-");
+
+  window.open(
+    "https://wa.me/" + CONFIG.whatsapp +
+    "?text=" + encodeURIComponent(message),
+    "_blank"
+  );
+});
+</script>
+</body>
+</html>
